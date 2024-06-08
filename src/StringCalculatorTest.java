@@ -1,24 +1,16 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StringCalculatorTest {
+class StringCalculatorTest {
 
-    @org.junit.jupiter.api.Test
-    public void add() throws Exception {
-        fail("This test has yet to be implemented");
+    @Test
+    void add() {
+        assertEquals(0, StringCalculator.add("") );
+        assertEquals(1, StringCalculator.add("1"));
+        assertEquals(6,StringCalculator.add("1,5"));
+        assertEquals(1+10+2+40+67+183+8736, StringCalculator.add("1,10,2,40,67,183,8736"));
+        assertEquals(1 + 10 + 2 + 40 + 67 + 183 + 873689845894L, StringCalculator.add("1,10,2,40,67,183,873689845894"));
     }
 
-    @org.junit.jupiter.api.Test
-    public void subtract() throws Exception {
-        fail("This test has yet to be implemented");
-    }
-
-    @org.junit.jupiter.api.Test
-    public void multiply() throws Exception {
-        fail("This test has yet to be implemented");
-    }
-
-    @org.junit.jupiter.api.Test
-    public void divide() throws Exception {
-        fail("This test has yet to be implemented");
-    }
 }
