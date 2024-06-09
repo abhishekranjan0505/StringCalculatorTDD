@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad114a9d-de15-4f56-a9c2-c901974540a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StringCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StringCalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StringCalculatorTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad114a9d-de15-4f56-a9c2-c901974540a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717846872764</updated>
-      <workItem from="1717846874955" duration="10917000" />
+      <workItem from="1717846874955" duration="11280000" />
     </task>
     <servers />
   </component>
