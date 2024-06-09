@@ -39,6 +39,19 @@ public class StringCalculatorTest {
         //numbers bigger than a thousand should be ignored
         assertEquals(1 + 2 + 4 + 1000, StringCalculator.add("//%\n1%2%1001,4,2000,1000"));
 
+        //delimiter of any length
+        assertEquals(1 + 2 + 3, StringCalculator.add("//[***]\n1***2***3"));
+        assertEquals(1 + 2 + 3 + 5, StringCalculator.add("//[***]\n1***2***3,5"));
+        assertEquals(1 + 2 + 3 + 5, StringCalculator.add("//[***]\n1***2***3,5***1001"));
+        assertEquals(1 + 2 + 3 + 5, StringCalculator.add("//[***]\n1***2***3,5******1001"));
+        // multiple negative numbers with delimiter of any length
+        try {
+            StringCalculator.add("//;;\n1;;-2;;-3;;-5,10,0");
+            fail("Exception expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: [-2, -3, -5]", e.getMessage());
+        }
+
     }
 
     @Test

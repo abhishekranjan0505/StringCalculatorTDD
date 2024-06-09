@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class StringCalculator {
     private static int callCount = 0;
@@ -11,25 +12,19 @@ public class StringCalculator {
         //create a list to store all the integers
         ArrayList<Integer> list = new ArrayList<>();
 
-        String delimiter = "[,\n]";
-        String numbersWithoutDelimiter = numbers;
-
-        if(numbers.startsWith("//")){
-            String newDelimiter = "" + numbers.charAt(2);
-            delimiter = delimiter.substring(0,3) + newDelimiter + "]";
-            numbersWithoutDelimiter = numbers.substring(4);
-        }
-
-        //split the string by commas, convert the split string to integers and add them to the list
-        String[] numberStrings = numbersWithoutDelimiter.split(delimiter);
+        StringTokenizer tokenizer = getStringTokenizer(numbers);
         ArrayList<Integer> negativeNumbers = new ArrayList<>();
-        for (String numberString : numberStrings) {
-            int num = Integer.parseInt(numberString);
-            if(num < 0)
-                negativeNumbers.add(num);
-            if(num > 1000)
-                continue;
-            list.add(num);
+
+        while (tokenizer.hasMoreTokens()) {
+            String numberString = tokenizer.nextToken();
+            if (!numberString.isEmpty()) {
+                int num = Integer.parseInt(numberString);
+                if(num < 0)
+                    negativeNumbers.add(num);
+                if(num > 1000)
+                    continue;
+                list.add(num);
+            }
         }
 
         //check for invalid arguments (negative numbers passed)
@@ -42,6 +37,22 @@ public class StringCalculator {
         for (int number : list)
             sum += number;
         return sum;
+    }
+
+    private static StringTokenizer getStringTokenizer(String numbers) {
+        String delimiter = ",|\n";
+        String numbersWithoutDelimiter = numbers;
+
+        if(numbers.startsWith("//")){
+            int delimiterIndex = numbers.indexOf("\n");
+            delimiter = numbers.substring(2, delimiterIndex);
+            numbersWithoutDelimiter = numbers.substring(delimiterIndex + 1);
+        }
+
+        delimiter += "|,";
+
+        //split the string by commas, convert the split string to integers and add them to the list
+        return new StringTokenizer(numbersWithoutDelimiter, delimiter);
     }
 
     public  static  int getCalledCount(){
