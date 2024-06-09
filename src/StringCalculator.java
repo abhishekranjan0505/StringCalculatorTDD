@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class StringCalculator {
+    private static int callCount = 0;
     public static int add(String numbers){
+        callCount++;
         // Check if the input string is empty
         if(numbers.isEmpty()){
             return 0;
@@ -44,6 +46,10 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    public  static  int getCalledCount(){
+        return callCount;
     }
 
 }

@@ -38,4 +38,26 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void getCalledCount(){
+        //returns how many number of times add() was called
+        assertEquals(0, StringCalculator.getCalledCount()); // Initial count should be 0
+        StringCalculator.add("1"); // call count = 1
+        assertEquals(1, StringCalculator.getCalledCount());
+        StringCalculator.add("1,2"); // call count = 2
+        assertEquals(2, StringCalculator.getCalledCount());
+        StringCalculator.add("1,2,3"); // call count = 3
+        assertEquals(3, StringCalculator.getCalledCount());
+        StringCalculator.add("//;\n1;2"); // call count = 4
+        assertEquals(4, StringCalculator.getCalledCount());
+        //counter should increase even after throwing exception for negative numbers
+        try {
+            StringCalculator.add("//;\n1;-2;3");
+            fail("Exception expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: [-2]", e.getMessage());
+        }
+        assertEquals(5, StringCalculator.getCalledCount());
+    }
+
 }
