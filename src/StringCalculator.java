@@ -12,7 +12,7 @@ public class StringCalculator {
         ArrayList<Integer> list = new ArrayList<>();
 
         //split the string by commas, convert the split string to integers and add them to the list
-        String[] numberStrings = numbers.split(",");
+        String[] numberStrings = numbers.split("[,\n]");
         for (String numberString : numberStrings) {
             list.add(Integer.parseInt(numberString));
         }
