@@ -52,6 +52,21 @@ public class StringCalculatorTest {
             assertEquals("Negatives not allowed: [-2, -3, -5]", e.getMessage());
         }
 
+        //multiple delimiter
+        assertEquals(1 + 2 + 3 + 5 + 10 + 1, StringCalculator.add("//[*][%]\n1*2,3,5%10%1"));
+
+        //multiple delimiter of any length
+        assertEquals(1 + 2 + 3 + 5 + 10 + 1, StringCalculator.add("//[***][%%]\n1***2***3,5%%10%%1"));
+        assertEquals(0, StringCalculator.add("//[***][%%]\n"));
+
+        // multiple negative numbers with delimiter of any length
+        try {
+            StringCalculator.add("//[***][%%]\n1***2***3,-5%%-10%%-1");
+            fail("Exception expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: [-5, -10, -1]", e.getMessage());
+        }
+
     }
 
     @Test
@@ -74,6 +89,10 @@ public class StringCalculatorTest {
             assertEquals("Negatives not allowed: [-2]", e.getMessage());
         }
         assertEquals(5, StringCalculator.getCalledCount());
+
+        StringCalculator.add("//[***][%%]\n1***2***3,5%%10%%1");
+        assertEquals(6, StringCalculator.getCalledCount());
+
     }
 
 }
