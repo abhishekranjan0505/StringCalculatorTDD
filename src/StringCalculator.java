@@ -45,9 +45,8 @@ public class StringCalculator {
 
         if(numbers.startsWith("//")){
             int delimiterIndex = numbers.indexOf("\n");
-            delimiter = numbers.substring(2, delimiterIndex);
+            delimiter = delimiter + numbers.substring(2, delimiterIndex);
             numbersWithoutDelimiter = numbers.substring(delimiterIndex + 1);
-            delimiter += ",|\n";
         }
 
         //split the string by commas, convert the split string to integers and add them to the list
