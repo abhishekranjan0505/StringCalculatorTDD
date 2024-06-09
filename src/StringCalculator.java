@@ -32,11 +32,7 @@ public class StringCalculator {
             throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
 
         //calculate the sum
-        int sum = 0;
-
-        for (int number : list)
-            sum += number;
-        return sum;
+        return list.stream().mapToInt(Integer::intValue).sum();
     }
 
     private static StringTokenizer getStringTokenizer(String numbers) {
