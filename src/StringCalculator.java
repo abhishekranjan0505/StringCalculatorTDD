@@ -47,9 +47,8 @@ public class StringCalculator {
             int delimiterIndex = numbers.indexOf("\n");
             delimiter = numbers.substring(2, delimiterIndex);
             numbersWithoutDelimiter = numbers.substring(delimiterIndex + 1);
+            delimiter += ",|\n";
         }
-
-        delimiter += "|,";
 
         //split the string by commas, convert the split string to integers and add them to the list
         return new StringTokenizer(numbersWithoutDelimiter, delimiter);

@@ -67,6 +67,9 @@ public class StringCalculatorTest {
             assertEquals("Negatives not allowed: [-5, -10, -1]", e.getMessage());
         }
 
+        //custom case added - \n can also be between the numbers
+        assertEquals(1 + 2 + 3 + 4 + 5 + 10 + 1, StringCalculator.add("//[***][%%]\n1***2***3,4\n5%%10%%1"));
+
     }
 
     @Test
