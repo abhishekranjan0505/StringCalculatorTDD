@@ -22,6 +22,20 @@ public class StringCalculatorTest {
         //check for custom delimiter with comma
         assertEquals(1 + 2 + 3 + 4, StringCalculator.add("//;\n1;2;3,4"));
         assertEquals(1 + 2 + 3 + 4, StringCalculator.add("//%\n1%2%3,4"));
+        //check for negative numbers
+        try {
+            StringCalculator.add("//;\n1;-2;3");
+            fail("Exception expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: [-2]", e.getMessage());
+        }
+        // multiple negative numbers
+        try {
+            StringCalculator.add("//;\n1;-2;-3;-5,10,0");
+            fail("Exception expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: [-2, -3, -5]", e.getMessage());
+        }
     }
 
 }

@@ -19,13 +19,22 @@ public class StringCalculator {
             numbersWithoutDelimiter = numbers.substring(4);
         }
 
-        System.out.println(delimiter);
-
         //split the string by commas, convert the split string to integers and add them to the list
         String[] numberStrings = numbersWithoutDelimiter.split(delimiter);
+        ArrayList<Integer> negativeNumbers = new ArrayList<>();
         for (String numberString : numberStrings) {
-            list.add(Integer.parseInt(numberString));
+            int num = Integer.parseInt(numberString);
+            if(num < 0){
+                negativeNumbers.add(num);
+            }
+            list.add(num);
         }
+
+        //check for invalid arguments (negative numbers passed)
+        if (!negativeNumbers.isEmpty()) {
+            throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
+        }
+
 
         //calculate the sum
         int sum = 0;
