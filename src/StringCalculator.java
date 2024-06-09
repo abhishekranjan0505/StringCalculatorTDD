@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public static int add(String numbers){
@@ -11,8 +13,19 @@ public class StringCalculator {
         //create a list to store all the integers
         ArrayList<Integer> list = new ArrayList<>();
 
+        String delimiter = "[,\n]";
+        String numbersWithoutDelimiter = numbers;
+
+        if(numbers.startsWith("//")){
+            String newDelimiter = "" + numbers.charAt(2);
+            delimiter = delimiter.substring(0,3) + newDelimiter + "]";
+            numbersWithoutDelimiter = numbers.substring(4);
+        }
+
+        System.out.println(delimiter);
+
         //split the string by commas, convert the split string to integers and add them to the list
-        String[] numberStrings = numbers.split("[,\n]");
+        String[] numberStrings = numbersWithoutDelimiter.split(delimiter);
         for (String numberString : numberStrings) {
             list.add(Integer.parseInt(numberString));
         }
