@@ -12,8 +12,8 @@ public class StringCalculatorTest {
         //check for comma separated numbers
         assertEquals(6,StringCalculator.add("1,5"));
         //check for an unknown amount of numbers
-        assertEquals(1+10+2+40+67+183+8736, StringCalculator.add("1,10,2,40,67,183,8736"));
-        assertEquals(1 + 10 + 2 + 40 + 67 + 183 + 873689, StringCalculator.add("1,10,2,40,67,183,873689"));
+        assertEquals(1+10+2+40+67+183, StringCalculator.add("1,10,2,40,67,183"));
+        assertEquals(1 + 10 + 2 + 40 + 67 + 183 + 87, StringCalculator.add("1,10,2,40,67,183,87"));
         //check for new lines between numbers
         assertEquals(13, StringCalculator.add("1\n2,10"));
         //check for custom delimiter - "//[delimiter]\n[numbers…]"
@@ -36,6 +36,9 @@ public class StringCalculatorTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Negatives not allowed: [-2, -3, -5]", e.getMessage());
         }
+        //numbers bigger than a thousand should be ignored
+        assertEquals(1 + 2 + 4 + 1000, StringCalculator.add("//%\n1%2%1001,4,2000,1000"));
+
     }
 
     @Test

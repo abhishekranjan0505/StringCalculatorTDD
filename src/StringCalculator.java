@@ -5,9 +5,8 @@ public class StringCalculator {
     public static int add(String numbers){
         callCount++;
         // Check if the input string is empty
-        if(numbers.isEmpty()){
+        if(numbers.isEmpty())
             return 0;
-        }
 
         //create a list to store all the integers
         ArrayList<Integer> list = new ArrayList<>();
@@ -26,25 +25,22 @@ public class StringCalculator {
         ArrayList<Integer> negativeNumbers = new ArrayList<>();
         for (String numberString : numberStrings) {
             int num = Integer.parseInt(numberString);
-            if(num < 0){
+            if(num < 0)
                 negativeNumbers.add(num);
-            }
+            if(num > 1000)
+                continue;
             list.add(num);
         }
 
         //check for invalid arguments (negative numbers passed)
-        if (!negativeNumbers.isEmpty()) {
+        if (!negativeNumbers.isEmpty())
             throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
-        }
-
 
         //calculate the sum
         int sum = 0;
 
-        for (int number : list) {
+        for (int number : list)
             sum += number;
-        }
-
         return sum;
     }
 
