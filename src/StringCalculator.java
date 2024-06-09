@@ -10,7 +10,7 @@ public class StringCalculator {
             return 0;
 
         //create a list to store all the integers
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> numberList = new ArrayList<>();
 
         StringTokenizer tokenizer = getStringTokenizer(numbers);
         ArrayList<Integer> negativeNumbers = new ArrayList<>();
@@ -23,7 +23,7 @@ public class StringCalculator {
                     negativeNumbers.add(num);
                 if(num > 1000)
                     continue;
-                list.add(num);
+                numberList.add(num);
             }
         }
 
@@ -32,7 +32,7 @@ public class StringCalculator {
             throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
 
         //calculate the sum
-        return list.stream().mapToInt(Integer::intValue).sum();
+        return numberList.stream().mapToInt(Integer::intValue).sum();
     }
 
     private static StringTokenizer getStringTokenizer(String numbers) {
